@@ -1,0 +1,134 @@
+/*
+	该文件为数据库描述文件。
+	数据库导出：mysqldump -u root -p grms > grms.sql
+	数据库导入：自己百度吧
+*/
+
+
+
+create table rights (
+	id int auto_increment primary key,
+	name varchar(50)
+) engine=innodb;
+create table users (
+	id int auto_increment primary key,
+	username varchar(20),			
+	password varchar(30),		//更改
+	sex varchar(6),
+	email varchar(30),
+	tel varchar(20)
+) engine=innodb;
+create table user_right (
+	user_id int,
+	right_id int,
+	foreign key(user_id) references users(id) on delete cascade,
+	foreign key(right_id) references rights(id) on delete cascade
+) engine=innodb;
+
+create table roles (
+	id int auto_increment primary key,
+	name varchar(20)
+) engine=innodb;
+create table role_user (
+	role_id int,
+	user_id int,
+	foreign key(user_id) references users(id) on delete cascade,
+	foreign key(role_id) references roles(id) on delete cascade	
+) engine=innodb;
+create table role_right (
+	role_id int,
+	right_id int,
+	foreign key(right_id) references rights(id) on delete cascade,
+	foreign key(role_id) references roles(id) on delete cascade	
+) engine=innodb;
+
+//应该创建root分支 id 为0   lst_id = 0
+create table branchs (	
+	id int auto_increment primary key,
+	lst_id int, 
+	name varchar(50),
+	foreign key(lst_id) references branchs(id) on delete cascade
+) engine=innodb;
+create table branch_right (
+	branch_id int,
+	right_id int,
+	foreign key(branch_id) references branchs(id) on delete cascade,
+	foreign key(right_id) references rights(id) on delete cascade		
+) engine=innodb;
+create table branch_role (
+	branch_id int,
+	role_id int,
+	foreign key(branch_id) references branchs(id) on delete cascade,
+	foreign key(role_id) references roles(id) on delete cascade	
+) engine=innodb;
+create table branch_user (
+	branch_id int,
+	user_id int,
+	foreign key(branch_id) references branchs(id) on delete cascade,
+	foreign key(user_id) references users(id) on delete cascade	
+)engine=innodb;
+create table logs (
+	id int auto_increment primary key,
+	user_id int,
+	date datetime,
+	descp varchar(100),
+	foreign key(user_id) references users(id) on delete cascade
+) engine=innodb;
+
+
+admin {
+	用户管理：
+		分配权限 取消 
+	角色管理：
+		分配权限 取消 修改用户
+	部门管理：
+		树形图 用户管理（修改） 角色管理 总权限
+}
+用户 
+{
+	用户管理：
+	所属角色：
+	查看用户权限：（用户＋角色＋部门）
+	权限管理：（用户）
+}
+角色 
+{
+	角色管理：增删改
+	包含用户：修改
+	角色权限：修改
+}
+部门 
+{
+	用户修改：
+	角色修改：包含某个角色 则部门有了该角色的权限
+	部门管理：添加修改删除
+	总权限：
+}
+日志 {
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
