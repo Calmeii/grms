@@ -1,3 +1,9 @@
 <?php
-	echo "hello world";
+require("header.php");
+?>
+
+<?php
+
+require("footer.php");
+
 ?>
