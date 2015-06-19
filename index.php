@@ -12,8 +12,8 @@
 		$rows = mysql_num_rows($res);
 
 		if ($rows == 1) {
-			$_SESSION['usersname'] = $_POST['username'];
-			$_SESSION['password'] = $_POST['password'];
+			$_SESSION['USERNAME'] = $_POST['username'];
+			$_SESSION['PASSWORD'] = $_POST['password'];
 			if ($_POST['username'] == 'admin') {
 				header("Location: ".$config_basedir."/coder/admin.php");
 			}

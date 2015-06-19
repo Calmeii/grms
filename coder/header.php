@@ -1,5 +1,12 @@
 <?php
+session_start();
 require("../config.php");
+if (isset($_SESSION['USERNAME']) == FALSE)
+{
+	 header("Location: ".$config_basedir."/index.php");
+}
+$db = mysql_connect($dbhost, $dbuser, $dbpassword);
+mysql_select_db($dbdatabase, $db);
 ?>
 
 <!doctype html>

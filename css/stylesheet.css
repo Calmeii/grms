@@ -102,7 +102,7 @@ img
 	color: #000;
 }
 table{
-	border: thin solid #f00;
+	border: none;
 	background: #fff;
 }
 th{
@@ -116,5 +116,7 @@ th{
 	border-bottom: thin solid #ccc;
 }
 td{
-	border: thin solid #f80;
+	border: thin;
+	background: #eee;
+
 }
