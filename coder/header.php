@@ -7,7 +7,6 @@ if (isset($_SESSION['USERNAME']) == FALSE)
 }
 $db = mysql_connect($dbhost, $dbuser, $dbpassword);
 mysql_select_db($dbdatabase, $db);
-mysql_query("set names 'utf8'");
 ?>
 
 <!doctype html>
