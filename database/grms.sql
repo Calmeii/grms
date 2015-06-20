@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2015 �?06 �?20 �?09:24
+-- 生成日期: 2015 �?06 �?20 �?10:38
 -- 服务器版本: 5.6.11
 -- PHP 版本: 5.5.1
 
@@ -94,14 +94,14 @@ CREATE TABLE IF NOT EXISTS `rights` (
 --
 
 INSERT INTO `rights` (`id`, `name`) VALUES
-(1, 'rights_1'),
-(2, 'rights_2'),
-(3, 'rights_3'),
-(4, 'rights_4'),
-(5, 'rights_5'),
-(6, 'rights_6'),
-(7, 'rights_7'),
-(8, 'rights_8');
+(1, '权限一'),
+(2, '权限二'),
+(3, '权限三'),
+(4, '权限四'),
+(5, '权限五'),
+(6, '权限六'),
+(7, '权限七'),
+(8, '权限八');
 
 -- --------------------------------------------------------
 
@@ -120,13 +120,14 @@ CREATE TABLE IF NOT EXISTS `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`) VALUES
-(1, 'roles_1'),
-(2, 'roles_2'),
-(3, 'roles_3'),
-(4, 'roles_4'),
-(5, 'roles_5'),
-(6, 'roles_6');
-
+(1, '角色一'),
+(2, '角色二'),
+(3, '角色三'),
+(4, '角色四'),
+(5, '角色五'),
+(6, '角色六');
+(7, '角色七');
+(8, '角色八');
 -- --------------------------------------------------------
 
 --
@@ -195,21 +196,22 @@ CREATE TABLE IF NOT EXISTS `users` (
   `tel` varchar(20) DEFAULT NULL,
   `password` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- 转存表中的数据 `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `sex`, `email`, `tel`, `password`) VALUES
-(1, 'admin', 'male', 'xxx@xx.com', '10086', '123'),
-(2, 'user_1', 'male', '333', '1231', 'qw'),
-(3, 'user_2', 'Male', '589@qq.com', '10011', 'nebg'),
-(4, 'user_3', 'Male', '5XX@qq.com', '114', 'nebg'),
-(5, 'user_4', 'Female', '1239@qq.com', '154', 'nbgd'),
-(6, 'user_5', 'Male', '5X9@qq.com', '114', 'nebg'),
-(7, 'user_6', 'Female', '58921@qq.com', '123', 'nebg'),
-(8, 'user_7', 'Male', '58XX9@qq.com', '114321', 'nebg');
+(1, 'admin', '男', 'xxx@xx.com', '10086', '123'),
+(2, '用户一', '男', '333', '1231', 'qw'),
+(3, '用户二', '男', '589@qq.com', '10011', 'nebg'),
+(4, '用户三', '男', '5XX@qq.com', '114', 'nebg'),
+(5, '用户四', '女', '1239@qq.com', '154', 'nbgd'),
+(6, '用户五', '男', '5X9@qq.com', '114', 'nebg'),
+(7, '用户六', '女', '58921@qq.com', '123', 'nebg'),
+(8, '用户七', '男', '58XX9@qq.com', '114321', 'nebg'),
+(13, '用户八', '男', '5X9@163.com', '123', '123');
 
 -- --------------------------------------------------------
 
