@@ -22,7 +22,8 @@
 			}
 		}
 		else {
-			header("Location: ".$config_basedir."/index.php?error=1");
+			header("Location:".$_SERVER['PHP_SELF']."?error=1");
+			//header("Location: ".$config_basedir."/index.php?error=1");
 		}
 	}
 	else {
@@ -32,25 +33,36 @@
 		}
 	}
 ?>
-<!doctype html>
+<!doctype html> <!-- 界面并不是完全正确 -->
+<html lang="en">
 <html>
 <head>
 	<title>General rights management system</title>
-	<link href="css/login.css" rel="stylesheet" type="text/css">
+	<link href="css/login.css" rel="stylesheet" type="text/css"/>
 	<meta charset="utf-8">
 </head>
 <body>
-	<div id = "header"> 
-		<h1><?php echo $config_webname; ?></h1> 
-	</div>
-	<div id =  "container">
-		<form action="index.php" method="post">
-			<label>Username</label>
-			<input type="text" name="username" placeholder="username"> <br />
-			<label>Password</label>
-			<input type="password" name="password" placeholder="password"> <br />
-			<input type="submit" name="submit" value="login">
-		</form>
-	</div>
+	<div class="container">
+		<section id="content">
+			<form action="index.php" method="post">
+				<h1><?php echo $config_webname; ?></h1>
+				<div>
+					<input type="text" placeholder="username"  name="username"  > <br /> <!-- name 改 id 就可以界面就没有错误 -->
+				</div>
+				<div>
+					<input type="password" placeholder="password"  name="password"  > <br /> <!-- name 改 id 就可以界面就没有错误 -->
+				</div>
+				<div>
+					<input type="submit" name="submit" value="login">
+					<a href="#">Lost your password?</a>
+					<a href="#">Register</a>
+				</div>
+			</form><!-- form -->
+			<div class="button">
+				<a href="#">About us</a>
+			</div><!-- button -->
+		</section><!-- content -->
+	</div><!-- container -->
 </body>
 </html>
+

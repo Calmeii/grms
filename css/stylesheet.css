@@ -101,6 +101,7 @@ img
 	background: #fff;
 	color: #000;
 }
+
 table{
 	border: none;
 	background: #fff;
@@ -115,8 +116,43 @@ th{
 	border-top: thick solid #eee;
 	border-bottom: thin solid #ccc;
 }
+
 td{
+	padding: 0px;
 	border: thin;
 	background: #eee;
-
+}
+.now input {
+	height: 30px;
+	border: none;
+	background-color:#CAE8EA; 
+	color: #797268; 
+	/*font-size: 15px;*/
+}
+.now table{
+border:1px solid #cad9ea; 
+color:#666; 
+table-layout:fixed; 
+empty-cells: show;
+border-collapse: collapse; 
+margin:0 auto; 
+}
+.now th{
+	background-color: #333;
+	color:#eee;
+	height:30px; 
+}
+.now th,td{
+	border:1px solid #cad9ea; 
+	padding:0 1em 0; 
+}
+.now tr{
+	background-color:#f5fafe; 
+}
+.now td{
+	/*border: thin solid #080;*/
+	background-color:#CAE8EA; 
+	color: #797268; 
+	padding: 0;
+	height:30px; 
 }
