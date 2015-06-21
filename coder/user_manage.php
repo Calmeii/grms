@@ -2,7 +2,7 @@
 if (isset($_SESSION['USERNAME']) == FALSE || $_SESSION['USERNAME'] != 'admin') {
 	header("Location: ".$config_basedir);
 }
-session_start();
+//session_start();
 require("../config.php");
 $db = mysql_connect($dbhost, $dbuser, $dbpassword);
 mysql_select_db($dbdatabase, $db);
