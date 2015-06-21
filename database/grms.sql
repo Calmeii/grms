@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2015 �?06 �?20 �?10:38
+-- 生成日期: 2015-06-21 20:39:10
 -- 服务器版本: 5.6.11
 -- PHP 版本: 5.5.1
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- 数据库: `grms`
 --
-CREATE DATABASE IF NOT EXISTS `grms` DEFAULT CHARACTER SET utf32 COLLATE utf32_general_ci;
+CREATE DATABASE IF NOT EXISTS `grms` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `grms`;
 
 -- --------------------------------------------------------
@@ -34,7 +34,23 @@ CREATE TABLE IF NOT EXISTS `branchs` (
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `lst_id` (`lst_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+
+--
+-- 转存表中的数据 `branchs`
+--
+
+INSERT INTO `branchs` (`id`, `lst_id`, `name`) VALUES
+(1, 1, '董事会'),
+(2, 1, '销售部'),
+(3, 1, '财务部'),
+(4, 1, '人事部'),
+(5, 2, '销售部第一小组'),
+(6, 2, '销售部第二小组'),
+(7, 3, '财务部第一小组'),
+(11, 3, '财务部第二小组'),
+(12, 4, '人事部第一小组'),
+(13, 4, '人事部第二小组');
 
 -- --------------------------------------------------------
 
@@ -49,6 +65,25 @@ CREATE TABLE IF NOT EXISTS `branch_right` (
   KEY `right_id` (`right_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- 转存表中的数据 `branch_right`
+--
+
+INSERT INTO `branch_right` (`branch_id`, `right_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(2, 1),
+(2, 1),
+(2, 2),
+(2, 3),
+(2, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -61,6 +96,20 @@ CREATE TABLE IF NOT EXISTS `branch_user` (
   KEY `branch_id` (`branch_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `branch_user`
+--
+
+INSERT INTO `branch_user` (`branch_id`, `user_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 4),
+(3, 5),
+(1, 6),
+(3, 7),
+(4, 8);
 
 -- --------------------------------------------------------
 
@@ -75,7 +124,14 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `descp` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `logs`
+--
+
+INSERT INTO `logs` (`id`, `user_id`, `date`, `descp`) VALUES
+(1, 1, '2015-06-21 18:40:00', 'add user');
 
 -- --------------------------------------------------------
 
@@ -113,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- 转存表中的数据 `roles`
@@ -125,9 +181,10 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 (3, '角色三'),
 (4, '角色四'),
 (5, '角色五'),
-(6, '角色六');
-(7, '角色七');
+(6, '角色六'),
+(7, '角色七'),
 (8, '角色八');
+
 -- --------------------------------------------------------
 
 --
