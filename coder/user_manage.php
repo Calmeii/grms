@@ -2,7 +2,7 @@
 if (isset($_SESSION['USERNAME']) == FALSE || $_SESSION['USERNAME'] != 'admin') {
 	header("Location: ".$config_basedir);
 }
-session_start();
+//session_start();
 require("../config.php");
 $db = mysql_connect($dbhost, $dbuser, $dbpassword);
 mysql_select_db($dbdatabase, $db);
@@ -32,17 +32,16 @@ require("header.php");
 $sql = "select * from users;";
 $res = mysql_query($sql);
 echo "<table class='now'>";
-echo "<tr><th>姓名</th><th>性别</th><th>电话</th><th>邮箱</th><th>删除</th><th>编辑</th></tr>";
+echo "<tr><th>姓名</th><th>性别</th><th>电话</th><th>邮箱</th><th>编辑</th></tr>";
 while ($row = mysql_fetch_assoc($res))
 {
 	echo "<form action=".$config_basedir."/coder/user_manage.php?id=".$row['id']." method='post'>";
 	echo "<tr>";
-	echo "<td><input type='text' name='username' value='".$row['username']."'></td>";
-	echo "<td><input type='text' name='sex' value='".$row['sex']."'></td>";
-	echo "<td><input type='text' name='tel' value='".$row['tel']."'></td>";
-	echo "<td><input type='text' name='email' value='".$row['email']."'></td>";
+	echo "<td><a href='user_info.php?id=".$row['id']."'>".$row['username']."</td>";
+	echo "<td>".$row['sex']."</td>";
+	echo "<td>".$row['tel']."</td>";
+	echo "<td>".$row['email']."</td>";
 	echo "<td><input type='submit' name='delete' value='删除'></td>";
-	echo "<td><input type='submit' name='edit' value='更新'></td>";
 	echo "</tr>";
 	echo '</form>';
 }

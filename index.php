@@ -3,14 +3,12 @@
 	require("config.php");
 	$db = mysql_connect($dbhost, $dbuser, $dbpassword);
 	mysql_select_db($dbdatabase, $db);
-
 	if (isset($_POST['submit']))
 	{
 		$sql = "select * from users where username='".$_POST['username']."' AND 
 		password='".$_POST['password']."';";
 		$res = mysql_query($sql);
 		$rows = mysql_num_rows($res);
-
 		if ($rows == 1) {
 			$_SESSION['USERNAME'] = $_POST['username'];
 			$_SESSION['PASSWORD'] = $_POST['password'];
@@ -23,7 +21,7 @@
 		}
 		else {
 			header("Location:".$_SERVER['PHP_SELF']."?error=1");
-			//header("Location: ".$config_basedir."/index.php?error=1");
+			header("Location: ".$config_basedir."/index.php?error=1");
 		}
 	}
 	else {

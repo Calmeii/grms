@@ -7,27 +7,22 @@ require("../config.php");
 $db = mysql_connect($dbhost, $dbuser, $dbpassword);
 mysql_select_db($dbdatabase, $db);
 
-if (isset($_POST['delete'])) {
-	$sql = "delete from roles where id='".$_GET['id']."'";
-	mysql_query($sql);
-	header("Location:".$_SERVER['PHP_SELF']);
+if(isset($_POST['edit'])){
+	$sql = "update roles ser name='".$_POST['name']."',
+	where id=".$_GET['id'].";"; 
 }
-else if (isset($_POST['add'])) {
-	$sql = "insert into roles(name) 
-	values('"
-		.$_POST['name']."');";
-		
+else if (isset($_POST['delete'])) {
+	$sql = "delete from roles where id='".$_GET['id']."'";
 	mysql_query($sql);
 	header("Location:".$_SERVER['PHP_SELF']);
 }
 require("header.php");
 ?>
 <?php
-$sql = "select * from roles;";
-$res = mysql_query($sql);
-echo "<table class='now'>";
-echo "<tr><th>名称</th><th>编号</th><th>删除</th><th>编辑</th></tr>";
-while ($row = mysql_fetch_assoc($res))
+$char_sql = "select username from users where id in (select user_id from role_user where role_id = ".$_GET['id']."); ";
+$char_res = mysql_query($char_sql);
+//$char_row = mysql_fetch_assoc($char_res);
+while($char_row = mysql_fetch_assoc($char_res))
 {
 	echo "<form action=".$config_basedir."/coder/char_manage.php?id=".$row['id']." method='post'>";
 	echo "<tr>";
@@ -48,6 +43,4 @@ echo '<tr>
 echo '</form>';
 echo "</table>";
 ?>
-<?php
-require("footer.php");
 ?>
