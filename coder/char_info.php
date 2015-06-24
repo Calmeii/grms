@@ -21,7 +21,6 @@ require("header.php");
 <?php
 $char_sql = "select username from users where id in (select user_id from role_user where role_id = ".$_GET['id']."); ";
 $char_res = mysql_query($char_sql);
-//$char_row = mysql_fetch_assoc($char_res);
 while($char_row = mysql_fetch_assoc($char_res))
 {
 	echo "<form action=".$config_basedir."/coder/char_manage.php?id=".$row['id']." method='post'>";

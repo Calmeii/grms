@@ -2,6 +2,7 @@
     <Project name="grms">
         <Folder name="coder">
             <File name="coder\admin.php" />
+<<<<<<< HEAD
             <File name="coder\users.php" />
             <File name="coder\char_manage.php" />
             <File name="coder\char_info.php" />
@@ -12,6 +13,16 @@
             <File name="coder\footer.php" />
             <File name="coder\header.php" />
             <File name="coder\dary.php" />
+=======
+            <File name="coder\bar.php" />
+            <File name="coder\char_manage.php" />
+            <File name="coder\dary.php" />
+            <File name="coder\depar_manage.php" />
+            <File name="coder\footer.php" />
+            <File name="coder\header.php" />
+            <File name="coder\users.php" />
+            <File name="coder\user_manage.php" />
+>>>>>>> origin/master
         </Folder>
         <Folder name="css">
             <File name="css\login.css" />
@@ -27,4 +38,8 @@
         <File name="config.php" />
         <File name="index.php" />
     </Project>
+<<<<<<< HEAD
+=======
+    <Project name="test" />
+>>>>>>> origin/master
 </NotepadPlus>

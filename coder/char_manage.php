@@ -8,6 +8,7 @@ $db = mysql_connect($dbhost, $dbuser, $dbpassword);
 mysql_select_db($dbdatabase, $db);
 
 if (isset($_POST['delete'])) {
+
 	$sql = "delete from roles where id='".$_GET['id']."'";
 	mysql_query($sql);
 	header("Location:".$_SERVER['PHP_SELF']);
