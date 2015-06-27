@@ -158,7 +158,15 @@ margin:0 auto;
 }
 
 
-
+#modify_user_info {
+	width: 300px;
+	padding: 30px;
+	display: block;
+	border: none;
+	background-color: #eee;
+	/*background-image: url(../image/2.jpg);*/
+	/*float: left;*/
+}
 
 
 
