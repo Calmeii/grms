@@ -8,18 +8,28 @@ $db = mysql_connect($dbhost, $dbuser, $dbpassword);
 mysql_select_db($dbdatabase, $db);
 
 if (isset($_POST['add_user'])){
-	$add_user_sql = "INSERT INTO role_user (role_id, user_id) VALUES (".$_GET['id'].", ".$_POST['sel_user'].");";
+	$add_user_sql = "INSERT INTO role_user (role_id, user_id) 
+	values (".$_GET['id'].", ".$_POST['sel_user'].");";
 	mysql_query($add_user_sql);
+	$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'add user in role');";
+	mysql_query($add_log);
+	
 }
 if (isset($_POST['add_right'])) {
 	$add_right_sql = "insert into role_right(role_id,right_id) 
-			values(".$_GET['id'].",".$_POST['sel_right'].");";
+	values(".$_GET['id'].",".$_POST['sel_right'].");";
 	mysql_query($add_right_sql);
+	$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'add right in role');";
+	mysql_query($add_log);
+	
 }
 if (isset($_POST['add_depar'])) {
 	$add_depar_sql = "insert into branch_role(branch_id,role_id) 
-			values(".$_POST['sel_depar'].",".$_GET['id'].");";
+	values(".$_POST['sel_depar'].",".$_GET['id'].");";
 	mysql_query($add_depar_sql);
+	$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'add adpar in role');";
+	mysql_query($add_log);
+	
 }
 
 
@@ -27,16 +37,23 @@ if (isset($_POST['del_right'])) {
 	$del_right_sql = "delete from role_right where role_id=".$_GET['id']." 
 			AND right_id = ".$_POST['right_id'].";";
 	mysql_query($del_right_sql);
+	$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'delete right in role');";
+	mysql_query($add_log);
+	
 }
 if (isset($_POST['del_depar'])) {
 	$del_depar_sql = "delete from branch_role where role_id=".$_GET['id']." 
 			AND branch_id = ".$_POST['branch_id'].";";
 	mysql_query($del_depar_sql);
+	$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'delete deparment in role');";
+	mysql_query($add_log);
 }
 if (isset($_POST['del_user'])) {
-	$sql2 = "delete from role_user where role_id=".$_GET['id']." 
+	$del_user_sql = "delete from role_user where role_id=".$_GET['id']." 
 			AND user_id = ".$_POST['user_id'].";";
-	mysql_query($sql2);
+	mysql_query($del_user_sql);
+	$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'delete user in role');";
+	mysql_query($add_log);
 }
 ?>
 
