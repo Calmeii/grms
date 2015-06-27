@@ -74,12 +74,7 @@ echo "<div id='user_right'>";
 	echo "<table><tr><th>用户权限</th><th>编辑</th></tr>";
 	while ($right_row = mysql_fetch_assoc($right_res))
 	{
-<<<<<<< HEAD
-		echo "<form action='".$config_basedir."/coder/user_info?id=".$_GET['id'].
-			"' method='post'>";
-=======
 		echo "<form action=".$config_basedir."/coder/user_info.php?id=".$_GET['id']." method='post'>";
->>>>>>> origin/master
 		echo "<tr>";
 		echo "<td>".$right_row['name']."</td>";
 		echo "<input type='hidden' name='right_id' value='".$right_row['id']."'>";
@@ -87,12 +82,7 @@ echo "<div id='user_right'>";
 		echo "</tr>";
 		echo "</form>";
 	}
-<<<<<<< HEAD
-	echo "<form action='".$config_basedir."/coder/user_info?id=".$_GET['id'].
-	"' method='post'>";
-=======
 	echo "<form action=".$config_basedir."/coder/user_info.php?id=".$_GET['id']." method='post'>";
->>>>>>> origin/master
 	echo "<tr><td>";
 	$add_sql = "select * from rights where id not in (select right_id
 				from user_right where user_id = ".$_GET['id'].");";
