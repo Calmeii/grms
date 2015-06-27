@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 	session_start();
 	require("config.php");
 	$db = mysql_connect($dbhost, $dbuser, $dbpassword);

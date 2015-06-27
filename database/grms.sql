@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2015-06-24 16:53:30
+-- 生成日期: 2015-06-27 09:49:30
 -- 服务器版本: 5.6.11
 -- PHP 版本: 5.5.1
 
@@ -48,7 +48,7 @@ INSERT INTO `branchs` (`id`, `lst_id`, `name`) VALUES
 (5, 2, '销售部第一小组'),
 (6, 2, '销售部第二小组'),
 (7, 3, '财务部第一小组'),
-(11, 3, '财务部第二小组'),
+(8, 3, '财务部第二小组'),
 (12, 4, '人事部第一小组'),
 (13, 4, '人事部第二小组');
 
@@ -77,12 +77,53 @@ INSERT INTO `branch_right` (`branch_id`, `right_id`) VALUES
 (1, 5),
 (1, 6),
 (1, 7),
-(1, 8),
 (2, 1),
 (2, 1),
 (2, 2),
 (2, 3),
 (2, 4);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `branch_role`
+--
+
+CREATE TABLE IF NOT EXISTS `branch_role` (
+  `branch_id` int(11) DEFAULT NULL,
+  `role_id` int(11) DEFAULT NULL,
+  KEY `branch_id` (`branch_id`),
+  KEY `role_id` (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `branch_role`
+--
+
+INSERT INTO `branch_role` (`branch_id`, `role_id`) VALUES
+(1, 1),
+(1, 2),
+(3, 4),
+(3, 5),
+(3, 4),
+(4, 6),
+(4, 5),
+(5, 5),
+(6, 6),
+(2, 5),
+(2, 4),
+(2, 2),
+(3, 1),
+(3, 1),
+(3, 1),
+(3, 3),
+(3, 1),
+(1, 3),
+(2, 3),
+(4, 3),
+(1, 4),
+(3, 2),
+(4, 2);
 
 -- --------------------------------------------------------
 
@@ -103,12 +144,10 @@ CREATE TABLE IF NOT EXISTS `branch_user` (
 
 INSERT INTO `branch_user` (`branch_id`, `user_id`) VALUES
 (1, 1),
-(1, 2),
 (2, 3),
 (2, 4),
 (3, 5),
-(1, 6),
-(3, 7);
+(1, 6);
 
 -- --------------------------------------------------------
 
@@ -142,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `rights` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `rights`
@@ -155,8 +194,7 @@ INSERT INTO `rights` (`id`, `name`) VALUES
 (4, '权限四'),
 (5, '权限五'),
 (6, '权限六'),
-(7, '权限七'),
-(8, '权限八');
+(7, '权限七');
 
 -- --------------------------------------------------------
 
@@ -168,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- 转存表中的数据 `roles`
@@ -180,10 +218,7 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 (3, '角色三'),
 (4, '角色四'),
 (5, '角色五'),
-(6, '角色六'),
-(10, '角色十（测试）'),
-(11, 'Zhongshan'),
-(12, '');
+(6, '角色六');
 
 -- --------------------------------------------------------
 
@@ -210,10 +245,16 @@ INSERT INTO `role_right` (`role_id`, `right_id`) VALUES
 (1, 4),
 (1, 5),
 (2, 1),
-(2, 3),
 (3, 1),
 (3, 3),
-(3, 4);
+(3, 4),
+(3, 2),
+(2, 2),
+(2, 2),
+(3, 5),
+(4, 1),
+(6, 1),
+(2, 3);
 
 -- --------------------------------------------------------
 
@@ -234,10 +275,14 @@ CREATE TABLE IF NOT EXISTS `role_user` (
 
 INSERT INTO `role_user` (`role_id`, `user_id`) VALUES
 (2, 1),
-(2, 2),
 (2, 3),
 (3, 1),
-(3, 3);
+(3, 3),
+(NULL, NULL),
+(3, 4),
+(3, 5),
+(6, 1),
+(2, 7);
 
 -- --------------------------------------------------------
 
@@ -253,20 +298,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `tel` varchar(20) DEFAULT NULL,
   `password` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `sex`, `email`, `tel`, `password`) VALUES
-(1, 'admin', '男', 'xxx@xx.com', '10086', '123'),
-(2, '用户一', '男', '333', '1231', 'qw'),
+(1, 'admin', 'nan', 'xxx@xx.com', '10086', '123'),
 (3, '用户二', '男', '589@qq.com', '10011', 'nebg'),
 (4, '用户三', '男', '5XX@qq.com', '114', 'nebg'),
 (5, '用户四', '女', '1239@qq.com', '154', 'nbgd'),
 (6, '用户五', '男', '5X9@qq.com', '114', 'nebg'),
-(7, '用户六', '女', '58921@qq.com', '123', 'nebg');
+(7, 'yonghu', 'mele', '21@qq.com', '1221', NULL);
 
 -- --------------------------------------------------------
 
@@ -292,11 +336,10 @@ INSERT INTO `user_right` (`user_id`, `right_id`) VALUES
 (1, 3),
 (1, 4),
 (1, 5),
-(2, 1),
-(2, 3),
 (3, 1),
 (3, 3),
-(3, 4);
+(3, 2),
+(7, 1);
 
 --
 -- 限制导出的表
@@ -314,6 +357,13 @@ ALTER TABLE `branchs`
 ALTER TABLE `branch_right`
   ADD CONSTRAINT `branch_right_ibfk_1` FOREIGN KEY (`branch_id`) REFERENCES `branchs` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `branch_right_ibfk_2` FOREIGN KEY (`right_id`) REFERENCES `rights` (`id`) ON DELETE CASCADE;
+
+--
+-- 限制表 `branch_role`
+--
+ALTER TABLE `branch_role`
+  ADD CONSTRAINT `branch_role_ibfk_1` FOREIGN KEY (`branch_id`) REFERENCES `branchs` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `branch_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
 --
 -- 限制表 `branch_user`

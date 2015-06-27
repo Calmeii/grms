@@ -8,6 +8,7 @@ if (isset($_SESSION['USERNAME']) == FALSE)
 $db = mysql_connect($dbhost, $dbuser, $dbpassword);
 mysql_select_db($dbdatabase, $db);
 mysql_query("set names 'utf8'");
+header('Content-type:text/html;charset ="utf-8" ');
 ?>
 
 <!doctype html>
@@ -16,6 +17,7 @@ mysql_query("set names 'utf8'");
 	<title><?php echo $config_webname; ?></title>
 	<link href="../css/stylesheet.css" rel="stylesheet" type="text/css">
 	<meta charset="utf-8">
+	<meta http-equiv="Content-type" content ="text/html;charset=utf-8">
 </head>
 <body>
 	<div id = "header">
