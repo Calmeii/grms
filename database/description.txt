@@ -42,7 +42,7 @@ create table role_right (
 	foreign key(role_id) references roles(id) on delete cascade	
 ) engine=innodb;
 
-//应该创建root分支 id 为0   lst_id = 0
+//应该创建root分支 id 为1   lst_id = 1
 create table branchs (	
 	id int auto_increment primary key,
 	lst_id int, 
