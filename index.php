@@ -1,11 +1,11 @@
-﻿<?php 
+<?php
 	session_start();
 	require("config.php");
 	$db = mysql_connect($dbhost, $dbuser, $dbpassword);
 	mysql_select_db($dbdatabase, $db);
 	if (isset($_POST['submit']))
 	{
-		$sql = "select * from users where username='".$_POST['username']."' AND 
+		$sql = "select * from users where username='".$_POST['username']."' AND
 		password='".$_POST['password']."';";
 		$res = mysql_query($sql);
 		$rows = mysql_num_rows($res);
@@ -15,13 +15,9 @@
 			if ($_POST['username'] == 'admin') {
 				header("Location: ".$config_basedir."/coder/admin.php");
 			}
-			else {
-				header("Location: ".$config_basedir."/coder/user.php");
-			}
 		}
 		else {
 			header("Location:".$_SERVER['PHP_SELF']."?error=1");
-			header("Location: ".$config_basedir."/index.php?error=1");
 		}
 	}
 	else {
@@ -31,7 +27,7 @@
 		}
 	}
 ?>
-<!doctype html> <!-- 界面并不是完全正确 -->
+<!doctype html>
 <html lang="en">
 <html>
 <head>
@@ -45,22 +41,22 @@
 			<form action="index.php" method="post">
 				<h1><?php echo $config_webname; ?></h1>
 				<div>
-					<input type="text" placeholder="username"  name="username"  > <br /> <!-- name 改 id 就可以界面就没有错误 -->
+					<input type="text" placeholder="username"  name="username"  > <br />
 				</div>
 				<div>
-					<input type="password" placeholder="password"  name="password"  > <br /> <!-- name 改 id 就可以界面就没有错误 -->
+					<input type="password" placeholder="password"  name="password"  > <br />
 				</div>
 				<div>
 					<input type="submit" name="submit" value="login">
 					<a href="#">Lost your password?</a>
 					<a href="#">Register</a>
 				</div>
-			</form><!-- form -->
+			</form>
 			<div class="button">
 				<a href="#">About us</a>
-			</div><!-- button -->
-		</section><!-- content -->
-	</div><!-- container -->
+			</div>
+		</section>
+	</div>
 </body>
 </html>
 
