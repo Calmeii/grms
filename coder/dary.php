@@ -15,10 +15,16 @@ if (isset($_POST['del_dary'])) {
 require("header.php");
 ?>
 <?php
-$dary_sql = "select * from logs ";
+$all_sql = "select * from logs;";
+$all_res = mysql_query($all_sql);
+$sum = mysql_num_rows($all_res);
+$cnt_row = 8;
+$pages = ceil($sum/$cnt_row);
+$dary_sql = "select * from logs order by date desc limit ".
+			$_GET['st']*$cnt_row.",".$cnt_row.";";
 $dary_res = mysql_query($dary_sql);
 $name = "admin";
-echo "<table  >";
+echo "<table>";
 echo "<tr><th>用户名</th><th>操作时间</th><th>操作描述</th><th>编辑</th></tr>";
 while($dary_row = mysql_fetch_assoc($dary_res))
 {
@@ -33,4 +39,18 @@ while($dary_row = mysql_fetch_assoc($dary_res))
 	echo "</form>";
 }
 echo "</table>";
+$lst = $_GET['st'] > 0 ? $_GET['st']-1 : $_GET['st'];
+$nxt = $_GET['st']<$pages-1?$_GET['st']+1:$_GET['st'];
+echo "<a href=dary.php?st=".$lst.">上一页</a>";
+echo "<a href=dary.php?st=".$nxt.">
+		下一页</a>";
 ?>
+
+
+
+
+
+
+
+
+
