@@ -19,33 +19,45 @@ function judge_submit()
 		$sql = "delete from branch_user where branch_id=".$_GET['id']."
 				and user_id=".$_POST['user_id'].";";
 		mysql_query($sql);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'delect user in deparment');";
+		mysql_query($add_log);		
 	}
 	if (isset($_POST['add_user'])) {
 		$sql = "insert into branch_user(branch_id,user_id) values(
 		 	".$_GET['id'].",".$_POST['user_id'].");";
 		mysql_query($sql);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'add user in deparment');";
+		mysql_query($add_log);
 	}
 	if (isset($_POST['delete_role'])) 
 	{
 		$sql = "delete from branch_role where branch_id=".$_GET['id']."
 				and role_id=".$_POST['role_id'].";";
 		mysql_query($sql);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'delect role in deparment');";
+		mysql_query($add_log);
 	}
 	if (isset($_POST['add_role'])) {
 		$sql = "insert into branch_role(branch_id,role_id) values(
 		 	".$_GET['id'].",".$_POST['role_id'].");";
 		mysql_query($sql);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'add role in deparment');";
+		mysql_query($add_log);
 	}
 	if (isset($_POST['delete_right'])) 
 	{
 		$sql = "delete from branch_right where branch_id=".$_GET['id']."
 				and right_id=".$_POST['right_id'].";";
 		mysql_query($sql);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'delect right in deparment');";
+		mysql_query($add_log);
 	}
 	if (isset($_POST['add_right'])) {
 		$sql = "insert into branch_right(branch_id,right_id) values(
 		 	".$_GET['id'].",".$_POST['right_id'].");";
 		mysql_query($sql);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'add right in deparment');";
+		mysql_query($add_log);
 	}
 
 }

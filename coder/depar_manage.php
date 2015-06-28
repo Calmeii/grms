@@ -17,11 +17,15 @@ function judge_submit()
 	if (isset($_POST['delete'])) {
 		$sql = "delete from branchs where id=".$_POST['id'].";";
 		mysql_query($sql);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'delete deparment');";
+		mysql_query($add_log);
 	}
 	else if (isset($_POST['add'])) {
 		$sql = "insert into branchs(lst_id, name) values(
 				'".$_POST['id']."','".$_POST[depar_name]."');";
 		mysql_query($sql);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'add deparment');";
+		mysql_query($add_log);
 	}
 }
 judge_admin();

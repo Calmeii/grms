@@ -18,36 +18,50 @@ function judge_submit()
 		$sql1 = "update users set username='".$_POST['username']."',sex='".$_POST['sex']."',
 		tel='".$_POST['tel']."',email='".$_POST['email']."' where id=".$_GET['id'].";";
 		mysql_query($sql1);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'update userinfo ');";
+		mysql_query($add_log);
 	}
 	if (isset($_POST['delete_right'])) {
 		$sql2 = "delete from user_right where user_id=".$_GET['id']." 
 				AND right_id = ".$_POST['right_id'].";";
 		mysql_query($sql2);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'delete right in user');";
+		mysql_query($add_log);
 	}
 	if (isset($_POST['add_right'])) {
 		$sql3 = "insert into user_right(user_id,right_id) 
 				values(".$_GET['id'].",".$_POST['add_right_id'].");";
 		mysql_query($sql3);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'add right in user');";
+		mysql_query($add_log);
 	}
 	if (isset($_POST['delete_role'])) {
 		$sql2 = "delete from role_user where user_id=".$_GET['id']." 
 				AND role_id = ".$_POST['role_id'].";";
 		mysql_query($sql2);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'delete role in user');";
+		mysql_query($add_log);
 	}
 	if (isset($_POST['add_role'])) {
 		$sql3 = "insert into role_user(user_id,role_id) 
 				values(".$_GET['id'].",".$_POST['add_role_id'].");";
 		mysql_query($sql3);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'add role in user');";
+		mysql_query($add_log);
 	}
 	if (isset($_POST['delete_depar'])) {
 		$sql2 = "delete from branch_user where user_id=".$_GET['id']." 
 				AND branch_id = ".$_POST['depar_id'].";";
 		mysql_query($sql2);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'delete department in user');";
+		mysql_query($add_log);
 	}
 	if (isset($_POST['add_branch'])) {
 		$sql3 = "insert into branch_user(user_id,branch_id) 
 				values(".$_GET['id'].",".$_POST['add_branch_id'].");";
 		mysql_query($sql3);
+		$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'add department in user');";
+		mysql_query($add_log);
 	}
 
 }

@@ -11,14 +11,15 @@ if (isset($_POST['delete'])) {
 
 	$sql = "delete from roles where id='".$_GET['id']."'";
 	mysql_query($sql);
+	$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'delete char');";
+	mysql_query($add_log);
 	header("Location:".$_SERVER['PHP_SELF']);
 }
 else if (isset($_POST['add'])) {
-	$sql = "insert into roles(name) 
-	values('"
-		.$_POST['name']."');";
-		
+	$sql = "insert into roles(name) values('".$_POST['name']."');";
 	mysql_query($sql);
+	$add_log = "INSERT INTO logs(`id`, `user_id`, `date`, `descp`) VALUES (NULL, '1', NOW(), 'add char');";
+	mysql_query($add_log);
 	header("Location:".$_SERVER['PHP_SELF']);
 }
 require("header.php");
